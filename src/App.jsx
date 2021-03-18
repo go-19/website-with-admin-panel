@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import "./App.css"
 
 function App() {
 
@@ -14,7 +15,7 @@ function App() {
       const dataFetched = await fetch("http://172.16.1.86:2001/upload");
       console.log(dataFetched);
       const json = await dataFetched.json()
-      
+
       setData({ loading: false, info: json, })
     })()
   }, []);
@@ -22,15 +23,19 @@ function App() {
 
   return (
     <>
-      <ul>
-        {
-          data.info.map((item, i) => {
-            return (
-              <li key={i}>{item.firstName}</li>
-            )
-          })
-        }
-      </ul>
+      <main>
+        <div className='container'>
+          <ul>
+            {
+              data.info.map((item, i) => {
+                return (
+                  <li key={i}>{item.firstName}</li>
+                )
+              })
+            }
+          </ul>
+        </div>
+      </main>
     </>
   );
 }
